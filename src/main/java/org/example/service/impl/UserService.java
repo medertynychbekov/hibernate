@@ -33,7 +33,6 @@ public class UserService implements Service<User> {
         } catch (SessionException e) {
             System.out.println(e.getMessage());
         }
-        return "user successfully deleted!!!";
     }
 
     public User update(int id, User user) {
