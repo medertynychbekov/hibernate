@@ -1,10 +1,10 @@
 package org.example.model;
 
 import jakarta.persistence.*;
-import lombok.*;
-
-import java.util.Objects;
-import java.util.Scanner;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Getter

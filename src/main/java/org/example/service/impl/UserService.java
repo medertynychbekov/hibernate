@@ -3,25 +3,26 @@ package org.example.service.impl;
 import jakarta.persistence.Query;
 import org.example.config.HibernateUtil;
 import org.example.model.User;
-import org.example.service.UserService;
+import org.example.service.Service;
 import org.hibernate.Session;
 import org.hibernate.SessionException;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserServiceImpl implements UserService {
+public class UserService implements Service<User> {
 
     public void save(User user) {
         Session session = HibernateUtil.getSession().openSession();
         session.beginTransaction();
+
         session.persist(user);
         session.getTransaction().commit();
         session.close();
         System.out.println(user + " successfully saved!!!");
     }
 
-    public String deleteById(int id) {
+    public void deleteById(int id) {
         try (Session session = HibernateUtil.getSession().openSession()) {
             session.beginTransaction();
             session.getTransaction().commit();
