@@ -1,8 +1,9 @@
 package org.example;
 
-import org.example.model.Car;
-import org.example.service.Service;
-import org.example.service.impl.CarService;
+import org.example.model.User;
+import org.example.service.UserService;
+
+import java.util.List;
 
 /**
  * Hello world!
@@ -10,14 +11,21 @@ import org.example.service.impl.CarService;
 public class App {
     public static void main(String[] args) {
 
-        Service<Car> carService = new CarService();
+        UserService userService = new UserService();
 
-        carService.save(new Car("BMW", 123, "M5"));
+        userService.save(new User(
+                "meder",
+                "tynychbekov",
+                "meder@gmail.com",
+                "biskek",
+                (byte) 23));
 
-        carService.update(8, new Car("BMW", 123, "M5"));
+        List<User> users = userService.findAll();
 
-        // System.out.println(carService.getAll());
+        User user = userService.findById(1L);
 
-        // carService.getAll().forEach(System.out::println);
+        System.out.println(user);
+//        users.forEach(System.out::println);
+
     }
 }

@@ -1,29 +1,33 @@
 package org.example.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 @Entity
 @Getter
 @Setter
 @ToString
-@Table(name = "users")
 @NoArgsConstructor
+@Table(name = "users")
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private String name;
-    private int age;
+    Long id;
+    String name;
+    @Column(name = "last_name")
+    String lastName;
+    String email;
+    String address;
+    byte age;
 
-    public User(String name, int age) {
+    public User(String name, String lastName, String email, String address, byte age) {
         this.name = name;
+        this.lastName = lastName;
+        this.email = email;
+        this.address = address;
         this.age = age;
     }
-
 }
-
-
